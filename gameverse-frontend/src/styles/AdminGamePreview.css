@@ -1,0 +1,123 @@
+.admin-preview-error,
+.admin-preview-loading {
+    padding: 32px;
+}
+
+.admin-preview-error {
+    color: #b91c1c;
+}
+
+.admin-preview-loading {
+    color: #475569;
+}
+
+.admin-preview-page {
+    height: 100%;
+    overflow: hidden;
+    background: #f8fafc;
+    padding: 20px 24px 24px;
+    box-sizing: border-box;
+}
+
+.admin-preview-inner {
+    max-width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 24px;
+}
+
+.admin-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.admin-preview-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0f766e;
+    margin-bottom: 8px;
+}
+
+.admin-preview-title {
+    margin: 0;
+    color: #0f172a;
+}
+
+.admin-preview-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.admin-preview-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 20px;
+    min-height: 0;
+    height: 100%;
+}
+
+.admin-preview-side,
+.admin-preview-play {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    min-height: 0;
+}
+
+.admin-preview-side {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    overflow: auto;
+}
+
+.admin-preview-play {
+    box-shadow: 0 20px 40px -30px rgba(15, 23, 42, 0.35);
+    overflow: hidden;
+}
+
+.admin-preview-cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    max-height: 148px;
+}
+
+.admin-preview-section-title {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #0f172a;
+}
+
+.admin-preview-text {
+    margin: 0;
+    color: #475569;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.admin-preview-text-pre {
+    white-space: pre-line;
+}
+
+.admin-preview-iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 18px;
+    background: #fff;
+    display: block;
+}

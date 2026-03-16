@@ -1,0 +1,153 @@
+.leaderboard-page {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.leaderboard-error {
+    padding: 40px;
+    color: #ef4444;
+    text-align: center;
+}
+
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.leaderboard-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin: 0;
+}
+
+.leaderboard-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+}
+
+.leaderboard-filter {
+    flex: 1;
+    min-width: 150px;
+}
+
+.leaderboard-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.leaderboard-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    outline: none;
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+.leaderboard-reset {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #475569;
+}
+
+.leaderboard-table-wrap {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.leaderboard-table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+.leaderboard-head-row {
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.leaderboard-th {
+    padding: 20px;
+    color: #475569;
+    font-weight: 700;
+}
+
+.leaderboard-align-right {
+    text-align: right;
+}
+
+.leaderboard-row {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.leaderboard-td {
+    padding: 15px 20px;
+}
+
+.leaderboard-rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.leaderboard-rank-default {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.leaderboard-rank-top {
+    color: #fff;
+}
+
+.leaderboard-player {
+    font-weight: 600;
+}
+
+.leaderboard-game-badge {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.leaderboard-score {
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.leaderboard-date {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.leaderboard-empty {
+    padding: 40px;
+    text-align: center;
+    color: #94a3b8;
+}
