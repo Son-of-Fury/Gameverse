@@ -4,6 +4,7 @@
     border: 1px solid #e2e8f0;
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
     padding: 24px;
+    min-width: 0;
 }
 
 .admin-section-header {
@@ -221,6 +222,7 @@
     justify-content: space-between;
     gap: 16px;
     align-items: flex-start;
+    min-width: 0;
 }
 
 .admin-row-start {
@@ -236,6 +238,19 @@
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+.home-card-badge {
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.home-card-badge-default {
+    color: #334155;
+    background: #e2e8f0;
 }
 
 .admin-title-strong {
@@ -260,6 +275,7 @@
 .admin-description {
     color: #475569;
     font-size: 0.95rem;
+    overflow-wrap: anywhere;
 }
 
 .admin-game-thumbnail {
@@ -350,4 +366,58 @@
     padding: 4px 10px;
     font-size: 0.78rem;
     font-weight: 800;
+}
+
+@media (max-width: 760px) {
+    .admin-page {
+        padding: 18px 12px 28px;
+    }
+
+    .admin-card {
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+
+    .admin-section-header,
+    .admin-page-header,
+    .admin-row-between {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-grid,
+    .admin-translation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-row-start {
+        flex-direction: column;
+    }
+
+    .admin-game-thumbnail {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .admin-game-summary {
+        max-width: none;
+        width: 100%;
+    }
+
+    .admin-actions,
+    .admin-button-row,
+    .admin-preview-actions {
+        justify-content: stretch;
+    }
+
+    .admin-button-primary,
+    .admin-button-secondary,
+    .admin-button-warning,
+    .admin-button-danger,
+    .admin-link-secondary,
+    .admin-upload-label {
+        width: 100%;
+        text-align: center;
+    }
 }

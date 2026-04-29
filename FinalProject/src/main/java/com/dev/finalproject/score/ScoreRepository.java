@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ScoreRepository extends JpaRepository<Score, Long> {
+    void deleteByUserId(Long userId);
 
     @Query("""
         select s from Score s

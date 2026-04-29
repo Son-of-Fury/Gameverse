@@ -75,31 +75,43 @@
 .app-avatar-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
+    gap: 10px;
+    min-width: 40px;
     height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
+    padding-right: 12px;
+    border-radius: 999px;
+    background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     text-decoration: none;
 }
 
 .app-avatar-image {
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 .app-avatar-fallback {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     background: #6366f1;
     color: #fff;
     font-weight: 700;
     font-size: 0.95rem;
+    border-radius: 50%;
+}
+
+.app-avatar-name {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #334155;
+    font-weight: 600;
 }
 
 .app-main {
@@ -108,4 +120,77 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+@supports (height: 100dvh) {
+    .app-shell {
+        height: 100dvh;
+    }
+}
+
+@media (max-width: 720px) {
+    .app-header {
+        grid-template-columns: 1fr auto;
+        height: auto;
+        min-height: 60px;
+        padding: 10px 14px;
+        gap: 10px;
+    }
+
+    .app-header > div[aria-hidden="true"] {
+        display: none;
+    }
+
+    .app-header-left {
+        gap: 12px;
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .app-header-right {
+        gap: 8px;
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .app-brand-link {
+        font-size: 1.05rem;
+    }
+
+    .app-nav-link,
+    .app-primary-link,
+    .app-ghost-button {
+        font-size: 0.9rem;
+    }
+
+    .app-primary-link,
+    .app-ghost-button {
+        padding: 8px 12px;
+    }
+
+    .app-avatar-link {
+        padding-right: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .app-avatar-name {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .app-header {
+        align-items: start;
+    }
+
+    .app-header-left,
+    .app-header-right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-header-right {
+        align-items: flex-end;
+    }
 }

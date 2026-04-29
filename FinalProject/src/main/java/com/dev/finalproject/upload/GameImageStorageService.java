@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @Service
-// game upload
 public class GameImageStorageService {
     private static final List<String> ALLOWED_CONTENT_TYPES = List.of(
             "image/jpeg",
@@ -31,13 +30,11 @@ public class GameImageStorageService {
     private final Path uploadDir;
     private final LocalizationService localizationService;
 
-    // upload setup
     public GameImageStorageService(@Value("${app.upload.game-dir:uploads/game-images}") String uploadDir, LocalizationService localizationService) {
         this.uploadDir = Paths.get(uploadDir).toAbsolutePath().normalize();
         this.localizationService = localizationService;
     }
 
-    // store image
     public Map<String, Object> storeGameImage(MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {
             throw new IllegalArgumentException(localizationService.get("upload.selectImage"));
@@ -70,24 +67,20 @@ public class GameImageStorageService {
         );
     }
 
-    // upload path
     public Path getUploadDir() {
         return uploadDir;
     }
 
-    // file ext
     private String extractExtension(String fileName) {
         int dotIndex = fileName.lastIndexOf('.');
         return dotIndex >= 0 ? fileName.substring(dotIndex) : "";
     }
 
-    // file name
     private String extractBaseName(String fileName) {
         int dotIndex = fileName.lastIndexOf('.');
         return dotIndex >= 0 ? fileName.substring(0, dotIndex) : fileName;
     }
 
-    // safe name
     private String sanitizeBaseName(String value) {
         String normalized = Normalizer.normalize(value, Normalizer.Form.NFD)
                 .replaceAll("\\p{M}", "")

@@ -55,6 +55,8 @@
 }
 
 .auth-input {
+    width: 100%;
+    box-sizing: border-box;
     padding: 12px;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
@@ -91,4 +93,22 @@
     color: #6366f1;
     font-weight: 700;
     text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .auth-page {
+        align-items: flex-start;
+        padding: 18px 14px;
+    }
+
+    .auth-card {
+        padding: 28px 18px;
+        border-radius: 16px;
+        gap: 16px;
+    }
+
+    .auth-field-header {
+        flex-direction: column;
+        gap: 6px;
+    }
 }

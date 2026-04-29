@@ -1,7 +1,7 @@
 package com.dev.finalproject.config;
 
-import com.dev.finalproject.auth.JwtAuthFilter;
-import com.dev.finalproject.auth.JwtService;
+import com.dev.finalproject.auth.security.JwtAuthFilter;
+import com.dev.finalproject.auth.security.JwtService;
 import com.dev.finalproject.i18n.LocalizationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 @Configuration
-// security config
 public class SecurityConfig {
     private final JwtService jwtService;
     private final LocalizationService localizationService;
@@ -30,7 +29,6 @@ public class SecurityConfig {
     }
 
     @Bean
-    // http security
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
@@ -56,8 +54,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/games/**").permitAll()
                         .requestMatchers("/api/leaderboard/**").permitAll()
                         .requestMatchers("/uploads/**").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/games/**").permitAll()
                         .requestMatchers("/", "/index.html", "/assets/**", "/*.js", "/*.css", "/favicon.ico", "/error").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -65,23 +61,19 @@ public class SecurityConfig {
     }
 
     @Bean
-    // cors config
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
-
         cfg.setAllowedOriginPatterns(List.of("http://localhost:5173"));
-        cfg.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE","OPTIONS"));
+        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         cfg.setAllowedHeaders(List.of("*"));
         cfg.setExposedHeaders(List.of("Authorization"));
         cfg.setAllowCredentials(true);
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
         return source;
     }
 
     @Bean
-    // password hash
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

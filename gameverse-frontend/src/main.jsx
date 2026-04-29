@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { I18nProvider } from "./i18n/I18nContext.jsx";
 
-// app mount
 ReactDOM.createRoot(document.getElementById("root")).render(
     <I18nProvider>
         <BrowserRouter>

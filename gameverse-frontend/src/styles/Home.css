@@ -42,6 +42,7 @@
 }
 
 .home-search {
+    box-sizing: border-box;
     width: 100%;
     padding: 14px 20px;
     border-radius: 12px;
@@ -227,8 +228,48 @@
 }
 
 @media (max-width: 900px) {
+    .home-page {
+        padding: 28px 18px;
+    }
+
+    .home-highlight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-page {
+        padding: 22px 14px;
+    }
+
+    .home-hero {
+        margin-bottom: 28px;
+    }
+
+    .home-title {
+        font-size: 2rem;
+    }
+
     .home-highlight-grid,
     .home-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .home-card-header {
+        flex-direction: column;
+    }
+
+    .home-artwork-default {
+        height: 160px;
+    }
+
+    .home-card-body {
+        padding: 16px;
     }
 }

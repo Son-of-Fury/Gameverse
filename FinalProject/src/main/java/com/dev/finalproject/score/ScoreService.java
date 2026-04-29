@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-// score service
 public class ScoreService {
     private final ScoreRepository scoreRepository;
     private final GameRepository gameRepository;
@@ -24,14 +23,12 @@ public class ScoreService {
         this.localizationService = localizationService;
     }
 
-    // save score
     public void saveScore(Long userId, Long gameId, int value) {
         Game game = gameRepository.findById(gameId).orElseThrow(() -> new RuntimeException(localizationService.get("game.notFound")));
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException(localizationService.get("user.notFound")));
         scoreRepository.save(new Score(game, user, value));
     }
 
-    // top rows
     public List<LeaderboardRow> top(Long gameId, int limit) {
         return scoreRepository.leaderboard(gameId).stream()
                 .limit(limit)
@@ -39,12 +36,10 @@ public class ScoreService {
                 .toList();
     }
 
-    // global rows
     public List<LeaderboardRow> globalLeaderboard() {
         return scoreRepository.globalLeaderboard();
     }
 
-    // game rows
     public List<LeaderboardRow> leaderboardByGame(Long gameId) {
         return scoreRepository.leaderboardByGame(gameId);
     }

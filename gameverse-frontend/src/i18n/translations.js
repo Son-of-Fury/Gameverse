@@ -35,6 +35,8 @@ export const translations = {
             allTime: "Összes idő",
             today: "Ma",
             yesterday: "Tegnap",
+            pickDate: "Válassz dátumot",
+            selectedDate: "Kiválasztott nap",
             order: "Rendezés",
             higherPointOnTop: "Magasabb pont felül",
             lowerPointOnTop: "Alacsonyabb pont felül",
@@ -70,7 +72,11 @@ export const translations = {
             anonymous: "Névtelen",
             start: "INDÍTÁS!",
             pointUnit: "PONT",
-            login: "Bejelentkezés"
+            login: "Bejelentkezés",
+            autoScoreSaving: "A pontokat menti automatikusan.",
+            scoreSavingUnavailable: "A pontok mentése nem lehetséges.",
+            fullscreen: "Teljes képernyő",
+            exitFullscreen: "Kilépés"
         },
         login: {
             title: "Bejelentkezés",
@@ -127,6 +133,9 @@ export const translations = {
             imageAllowed: "Engedélyezett: JPG, PNG, WEBP, GIF",
             uploadSuccess: "Profilkép sikeresen feltöltve.",
             uploadError: "A kép feltöltése nem sikerült.",
+            delete: "Profil törlése",
+            deleting: "Profil törlése...",
+            deleteConfirm: "Biztosan törölni szeretnéd a profilodat? Ez a művelet nem vonható vissza.",
             originalFile: "Eredeti fájlnév",
             storedFile: "Mentett fájlnév",
             size: "Méret",
@@ -175,7 +184,8 @@ export const translations = {
             gameTitleEnPlaceholder: "Angol cím",
             gameTitlePlaceholder: "Például: Retro Runner",
             gameSlug: "Slug",
-            gameSlugPlaceholder: "retro-runner",
+            gameSlugPlaceholder: "Automatikusan generálódik",
+            gameSlugAutoHint: "A slug a megadott játékcímből automatikusan készül, és a játék linkjében ezt használja a rendszer.",
             gameDescription: "Leírás",
             gameDescriptionHuPlaceholder: "Magyar rövid leírás a kezdőoldalhoz",
             gameDescriptionEnPlaceholder: "Rövid angol leírás a kezdőoldalhoz",
@@ -267,7 +277,8 @@ export const translations = {
             profile: {
                 load: "A profil betöltése nem sikerült.",
                 save: "A profil mentése nem sikerült.",
-                upload: "A kép feltöltése nem sikerült."
+                upload: "A kép feltöltése nem sikerült.",
+                delete: "A profil törlése nem sikerült."
             },
             admin: {
                 notAllowed: "Ehhez admin jogosultság szükséges.",
@@ -321,6 +332,8 @@ export const translations = {
             allTime: "All time",
             today: "Today",
             yesterday: "Yesterday",
+            pickDate: "Choose a date",
+            selectedDate: "Selected day",
             order: "Order",
             higherPointOnTop: "Higher score first",
             lowerPointOnTop: "Lower score first",
@@ -356,7 +369,11 @@ export const translations = {
             anonymous: "Anonymous",
             start: "START!",
             pointUnit: "POINT",
-            login: "Login"
+            login: "Login",
+            autoScoreSaving: "Scores are saved automatically.",
+            scoreSavingUnavailable: "Score saving is not available.",
+            fullscreen: "Fullscreen",
+            exitFullscreen: "Exit"
         },
         login: {
             title: "Login",
@@ -413,6 +430,9 @@ export const translations = {
             imageAllowed: "Allowed: JPG, PNG, WEBP, GIF",
             uploadSuccess: "Profile image uploaded successfully.",
             uploadError: "Failed to upload image.",
+            delete: "Delete profile",
+            deleting: "Deleting profile...",
+            deleteConfirm: "Are you sure you want to delete your profile? This action cannot be undone.",
             originalFile: "Original file",
             storedFile: "Stored file",
             size: "Size",
@@ -461,7 +481,8 @@ export const translations = {
             gameTitleEnPlaceholder: "English title",
             gameTitlePlaceholder: "For example: Retro Runner",
             gameSlug: "Slug",
-            gameSlugPlaceholder: "retro-runner",
+            gameSlugPlaceholder: "Generated automatically",
+            gameSlugAutoHint: "The slug is generated automatically from the game title and is used in the game's URL.",
             gameDescription: "Description",
             gameDescriptionHuPlaceholder: "Short Hungarian description for the home page",
             gameDescriptionEnPlaceholder: "Short English description for the home page",
@@ -553,7 +574,8 @@ export const translations = {
             profile: {
                 load: "Failed to load profile.",
                 save: "Failed to save profile.",
-                upload: "Failed to upload the image."
+                upload: "Failed to upload the image.",
+                delete: "Failed to delete profile."
             },
             admin: {
                 notAllowed: "Admin permission is required for this action.",

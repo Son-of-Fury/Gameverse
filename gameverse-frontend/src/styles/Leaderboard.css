@@ -2,6 +2,9 @@
     padding: 40px 20px;
     max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .leaderboard-error {
@@ -23,9 +26,11 @@
 }
 
 .leaderboard-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) minmax(180px, 1fr) minmax(160px, 1fr) auto;
+    align-items: end;
+    column-gap: 15px;
+    row-gap: 12px;
     margin-bottom: 20px;
     padding: 20px;
     background: #fff;
@@ -34,8 +39,10 @@
 }
 
 .leaderboard-filter {
-    flex: 1;
-    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 0;
 }
 
 .leaderboard-label {
@@ -46,6 +53,7 @@
 }
 
 .leaderboard-select {
+    box-sizing: border-box;
     width: 100%;
     padding: 10px;
     border-radius: 8px;
@@ -56,8 +64,45 @@
     font-size: 0.9rem;
 }
 
+.leaderboard-date-input {
+    min-height: 42px;
+    color: transparent;
+    position: relative;
+}
+
+.leaderboard-date-input.has-value,
+.leaderboard-date-input:focus {
+    color: transparent;
+}
+
+.leaderboard-date-field {
+    position: relative;
+}
+
+.leaderboard-date-placeholder,
+.leaderboard-date-value {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+.leaderboard-date-placeholder {
+    color: #94a3b8;
+}
+
+.leaderboard-date-value {
+    color: #1e293b;
+    right: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .leaderboard-reset {
-    align-self: flex-end;
+    align-self: end;
     padding: 10px 20px;
     background: #f1f5f9;
     border: none;
@@ -71,13 +116,15 @@
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     border: 1px solid #e2e8f0;
 }
 
 .leaderboard-table {
     border-collapse: collapse;
     width: 100%;
+    min-width: 680px;
     text-align: left;
 }
 
@@ -150,4 +197,46 @@
     padding: 40px;
     text-align: center;
     color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+    .leaderboard-filters {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+    }
+
+    .leaderboard-reset {
+        justify-self: start;
+    }
+}
+
+@media (max-width: 640px) {
+    .leaderboard-page {
+        padding: 24px 12px;
+    }
+
+    .leaderboard-title {
+        font-size: 2rem;
+    }
+
+    .leaderboard-filters {
+        padding: 14px;
+    }
+
+    .leaderboard-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .leaderboard-filter {
+        min-width: 0;
+    }
+
+    .leaderboard-reset {
+        width: 100%;
+        justify-self: stretch;
+    }
+
+    .leaderboard-th,
+    .leaderboard-td {
+        padding: 12px;
+    }
 }

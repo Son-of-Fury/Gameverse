@@ -1,6 +1,6 @@
 package com.dev.finalproject.config;
 
-import com.dev.finalproject.auth.AuthUserResolver;
+import com.dev.finalproject.auth.security.AuthUserResolver;
 import com.dev.finalproject.upload.GameImageStorageService;
 import com.dev.finalproject.upload.ProfileImageStorageService;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.util.List;
 
 @Configuration
-// web config
 public class WebConfig implements WebMvcConfigurer {
     private final ProfileImageStorageService profileImageStorageService;
     private final GameImageStorageService gameImageStorageService;
@@ -22,13 +21,11 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Override
-    // arg resolver
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new AuthUserResolver());
     }
 
     @Override
-    // static files
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         Path uploadDir = profileImageStorageService.getUploadDir();
         registry.addResourceHandler("/uploads/**")

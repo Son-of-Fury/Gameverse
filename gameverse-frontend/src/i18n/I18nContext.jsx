@@ -1,51 +1,52 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useSyncExternalStore } from "react";
+import { getStoredLanguage, setStoredLanguage } from "../lib/storage/languageStorage.js";
+import { DEFAULT_LANGUAGE, I18nContext } from "./context.js";
 import { translations } from "./translations.js";
+const listeners = new Set();
 
-const LANGUAGE_KEY = "gv_language";
-const defaultLanguage = "hu";
+const languageStore = {
+    getSnapshot() {
+        const language = getStoredLanguage();
+        document.documentElement.lang = language;
+        return language;
+    },
+    subscribe(listener) {
+        listeners.add(listener);
+        return () => listeners.delete(listener);
+    },
+    setLanguage(language) {
+        setStoredLanguage(language);
+        document.documentElement.lang = language;
+        listeners.forEach((listener) => listener());
+    }
+};
 
-// i18n context
-const I18nContext = createContext({
-    language: defaultLanguage,
-    setLanguage: () => {},
-    t: (key) => key,
-    locale: "hu-HU"
-});
-
-// nested key
-function getNestedValue(obj, path) {
-    return path.split(".").reduce((acc, part) => acc?.[part], obj);
+function getNestedValue(object, path) {
+    return path.split(".").reduce((current, part) => current?.[part], object);
 }
 
-// i18n provider
+function createTranslator(language) {
+    return function translate(key, ...args) {
+        const dictionary = translations[language] || translations[DEFAULT_LANGUAGE];
+        const fallback = translations[DEFAULT_LANGUAGE];
+        const resolved = getNestedValue(dictionary, key) ?? getNestedValue(fallback, key) ?? key;
+        return typeof resolved === "function" ? resolved(...args) : resolved;
+    };
+}
+
 export function I18nProvider({ children }) {
-    const [language, setLanguage] = useState(() => localStorage.getItem(LANGUAGE_KEY) || defaultLanguage);
+    const language = useSyncExternalStore(
+        languageStore.subscribe,
+        languageStore.getSnapshot,
+        languageStore.getSnapshot
+    );
 
-    // sync lang
-    useEffect(() => {
-        localStorage.setItem(LANGUAGE_KEY, language);
-        document.documentElement.lang = language;
-    }, [language]);
-
-    // i18n value
-    const value = useMemo(() => {
-        const locale = language === "hu" ? "hu-HU" : "en-US";
-
-        // text lookup
-        function t(key, ...args) {
-            const dictionary = translations[language] || translations[defaultLanguage];
-            const fallback = translations[defaultLanguage];
-            const resolved = getNestedValue(dictionary, key) ?? getNestedValue(fallback, key) ?? key;
-            return typeof resolved === "function" ? resolved(...args) : resolved;
-        }
-
-        return { language, setLanguage, t, locale };
-    }, [language]);
+    const value = {
+        language,
+        setLanguage: languageStore.setLanguage,
+        t: createTranslator(language),
+        locale: language === "hu" ? "hu-HU" : "en-US"
+    };
 
     return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
-}
-
-// i18n hook
-export function useI18n() {
-    return useContext(I18nContext);
 }

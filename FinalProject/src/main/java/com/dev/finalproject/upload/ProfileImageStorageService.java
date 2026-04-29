@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @Service
-// profile upload
 public class ProfileImageStorageService {
     private static final List<String> ALLOWED_CONTENT_TYPES = List.of(
             "image/jpeg",
@@ -47,7 +46,6 @@ public class ProfileImageStorageService {
         this.localizationService = localizationService;
     }
 
-    // store image
     public Map<String, Object> storeProfileImage(Long userId, MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {
             throw new IllegalArgumentException(localizationService.get("upload.selectImage"));
@@ -97,24 +95,20 @@ public class ProfileImageStorageService {
         );
     }
 
-    // upload path
     public Path getUploadDir() {
         return uploadDir;
     }
 
-    // file ext
     private String extractExtension(String fileName) {
         int dotIndex = fileName.lastIndexOf('.');
         return dotIndex >= 0 ? fileName.substring(dotIndex) : "";
     }
 
-    // file name
     private String extractBaseName(String fileName) {
         int dotIndex = fileName.lastIndexOf('.');
         return dotIndex >= 0 ? fileName.substring(0, dotIndex) : fileName;
     }
 
-    // safe name
     private String sanitizeBaseName(String value) {
         String normalized = Normalizer.normalize(value, Normalizer.Form.NFD)
                 .replaceAll("\\p{M}", "")

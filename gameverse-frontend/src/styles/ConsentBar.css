@@ -84,3 +84,31 @@
     border: 1px solid #cbd5e1;
     box-shadow: 0 10px 18px -18px rgba(15, 23, 42, 0.45);
 }
+
+@media (max-width: 640px) {
+    .consent-shell {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .consent-bar {
+        padding: 16px;
+        border-radius: 18px;
+        align-items: flex-start;
+    }
+
+    .consent-content {
+        flex-basis: 100%;
+    }
+
+    .consent-actions {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .consent-button {
+        width: 100%;
+        min-width: 0;
+    }
+}

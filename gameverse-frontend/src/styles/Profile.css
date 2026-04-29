@@ -13,6 +13,7 @@
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    box-sizing: border-box;
 }
 
 .profile-header {
@@ -150,4 +151,56 @@
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+}
+
+.profile-delete-button {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.profile-delete-button:disabled,
+.profile-save-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+@media (max-width: 640px) {
+    .profile-page {
+        padding: 18px 12px 28px;
+    }
+
+    .profile-card {
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .profile-header {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .profile-avatar-image,
+    .profile-avatar-fallback {
+        width: 56px;
+        height: 56px;
+    }
+
+    .profile-title {
+        font-size: 1.55rem;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .profile-save-button,
+    .profile-logout-button,
+    .profile-delete-button {
+        width: 100%;
+    }
 }
